@@ -1,8 +1,11 @@
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Search } from "lucide-react";
+import { WhatsApp } from "lucide-react";
 
 const Hero = () => {
+  const handleWhatsAppClick = () => {
+    window.open("https://wa.me/5535910177164", "_blank");
+  };
+
   return (
     <div className="relative bg-gradient-to-b from-primary/5 to-primary/0 pt-32 pb-20">
       <div className="container mx-auto px-4">
@@ -14,14 +17,13 @@ const Hero = () => {
             Conectamos você a profissionais qualificados para realizar seus serviços com qualidade e segurança
           </p>
           
-          <div className="flex flex-col md:flex-row gap-4 max-w-2xl mx-auto">
-            <Input 
-              placeholder="Que serviço você precisa?"
-              className="h-12 text-lg"
-            />
-            <Button className="h-12 px-8 text-lg">
-              <Search className="mr-2 h-5 w-5" />
-              Buscar
+          <div className="flex justify-center">
+            <Button 
+              onClick={handleWhatsAppClick}
+              className="h-12 px-8 text-lg flex items-center gap-2"
+            >
+              <WhatsApp className="h-5 w-5" />
+              Fale Conosco
             </Button>
           </div>
         </div>
