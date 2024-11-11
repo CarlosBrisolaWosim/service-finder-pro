@@ -1,7 +1,10 @@
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 const PricingPlans = () => {
+  const navigate = useNavigate();
+  
   const plans = [
     {
       name: "Básico",
@@ -48,7 +51,7 @@ const PricingPlans = () => {
   ];
 
   return (
-    <div className="py-20 bg-gray-50">
+    <div className="py-20 bg-gray-50" id="pricing">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="text-3xl font-bold mb-4">
@@ -94,6 +97,7 @@ const PricingPlans = () => {
               </ul>
 
               <Button
+                onClick={() => navigate("/register")}
                 className={`w-full ${
                   plan.highlighted
                     ? "bg-white text-primary hover:bg-gray-100"

@@ -6,6 +6,16 @@ import { useState } from "react";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const scrollToBenefits = () => {
+    const element = document.querySelector("#benefits");
+    element?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const scrollToPricing = () => {
+    const element = document.querySelector("#pricing");
+    element?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <nav className="bg-white shadow-sm fixed w-full z-50">
       <div className="container mx-auto px-4">
@@ -19,12 +29,18 @@ const Navbar = () => {
             <Link to="/" className="text-gray-600 hover:text-primary transition-colors">
               Início
             </Link>
-            <Link to="/how-it-works" className="text-gray-600 hover:text-primary transition-colors">
+            <button 
+              onClick={scrollToBenefits}
+              className="text-gray-600 hover:text-primary transition-colors"
+            >
               Como Funciona
-            </Link>
-            <Link to="/register" className="text-gray-600 hover:text-primary transition-colors">
+            </button>
+            <button
+              onClick={scrollToPricing}
+              className="text-gray-600 hover:text-primary transition-colors"
+            >
               Seja um Profissional
-            </Link>
+            </button>
             <Link to="/login">
               <Button variant="outline" className="flex items-center gap-2">
                 <LogIn className="h-4 w-4" />
@@ -57,20 +73,24 @@ const Navbar = () => {
               >
                 Início
               </Link>
-              <Link
-                to="/how-it-works"
-                className="text-gray-600 hover:text-primary transition-colors"
-                onClick={() => setIsMenuOpen(false)}
+              <button
+                onClick={() => {
+                  scrollToBenefits();
+                  setIsMenuOpen(false);
+                }}
+                className="text-gray-600 hover:text-primary transition-colors text-left"
               >
                 Como Funciona
-              </Link>
-              <Link
-                to="/register"
-                className="text-gray-600 hover:text-primary transition-colors"
-                onClick={() => setIsMenuOpen(false)}
+              </button>
+              <button
+                onClick={() => {
+                  scrollToPricing();
+                  setIsMenuOpen(false);
+                }}
+                className="text-gray-600 hover:text-primary transition-colors text-left"
               >
                 Seja um Profissional
-              </Link>
+              </button>
               <Link
                 to="/login"
                 className="text-gray-600 hover:text-primary transition-colors"
