@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { WhatsApp } from "lucide-react";
+import { MessageSquare } from "lucide-react";
 
 const Hero = () => {
   const handleWhatsAppClick = () => {
@@ -22,7 +22,7 @@ const Hero = () => {
               onClick={handleWhatsAppClick}
               className="h-12 px-8 text-lg flex items-center gap-2"
             >
-              <WhatsApp className="h-5 w-5" />
+              <MessageSquare className="h-5 w-5" />
               Fale Conosco
             </Button>
           </div>
