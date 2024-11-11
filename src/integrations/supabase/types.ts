@@ -94,47 +94,6 @@ export type Database = {
           },
         ]
       }
-      IA_Funcionarios_site: {
-        Row: {
-          cep: string | null
-          conversaidDify: string | null
-          cpf: string | null
-          created_at: string
-          id: number
-          id_empresa: number | null
-          nome: string | null
-          telefone: string | null
-        }
-        Insert: {
-          cep?: string | null
-          conversaidDify?: string | null
-          cpf?: string | null
-          created_at?: string
-          id?: number
-          id_empresa?: number | null
-          nome?: string | null
-          telefone?: string | null
-        }
-        Update: {
-          cep?: string | null
-          conversaidDify?: string | null
-          cpf?: string | null
-          created_at?: string
-          id?: number
-          id_empresa?: number | null
-          nome?: string | null
-          telefone?: string | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "IA_Funcionarios_site_id_empresa_fkey"
-            columns: ["id_empresa"]
-            isOneToOne: false
-            referencedRelation: "IA_Wosim"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
       IA_Wosim: {
         Row: {
           chaveDify: string | null
@@ -185,6 +144,44 @@ export type Database = {
           session_id?: string
         }
         Relationships: []
+      }
+      resources: {
+        Row: {
+          created_at: string | null
+          description: string | null
+          id: number
+          id_empresa: number | null
+          status: string | null
+          title: string
+          type: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          description?: string | null
+          id?: number
+          id_empresa?: number | null
+          status?: string | null
+          title: string
+          type?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          description?: string | null
+          id?: number
+          id_empresa?: number | null
+          status?: string | null
+          title?: string
+          type?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "resources_id_empresa_fkey"
+            columns: ["id_empresa"]
+            isOneToOne: false
+            referencedRelation: "IA_Wosim"
+            referencedColumns: ["id"]
+          },
+        ]
       }
     }
     Views: {
