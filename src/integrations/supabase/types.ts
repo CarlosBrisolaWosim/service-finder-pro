@@ -127,23 +127,58 @@ export type Database = {
         }
         Relationships: []
       }
-      n8n_chat_histories: {
+      professional_registrations: {
         Row: {
+          cep: string
+          cpf: string
+          created_at: string | null
+          email: string
           id: number
-          message: Json
-          session_id: string
+          id_empresa: number | null
+          nome: string
+          plan_type: string
+          rg_photo_url: string | null
+          status: string | null
+          telefone: string
+          user_id: string | null
         }
         Insert: {
+          cep: string
+          cpf: string
+          created_at?: string | null
+          email: string
           id?: number
-          message: Json
-          session_id: string
+          id_empresa?: number | null
+          nome: string
+          plan_type: string
+          rg_photo_url?: string | null
+          status?: string | null
+          telefone: string
+          user_id?: string | null
         }
         Update: {
+          cep?: string
+          cpf?: string
+          created_at?: string | null
+          email?: string
           id?: number
-          message?: Json
-          session_id?: string
+          id_empresa?: number | null
+          nome?: string
+          plan_type?: string
+          rg_photo_url?: string | null
+          status?: string | null
+          telefone?: string
+          user_id?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "professional_registrations_id_empresa_fkey"
+            columns: ["id_empresa"]
+            isOneToOne: false
+            referencedRelation: "IA_Wosim"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       resources: {
         Row: {
