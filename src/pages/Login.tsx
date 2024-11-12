@@ -30,7 +30,13 @@ const Login = () => {
         password: values.password,
       });
 
-      if (error) throw error;
+      if (error) {
+        if (error.message === "Invalid login credentials") {
+          toast.error("Email ou senha incorretos");
+          return;
+        }
+        throw error;
+      }
 
       if (data.user) {
         toast.success("Login realizado com sucesso!");
@@ -38,7 +44,7 @@ const Login = () => {
       }
     } catch (error) {
       console.error(error);
-      toast.error("Erro ao realizar login. Verifique suas credenciais.");
+      toast.error("Erro ao realizar login. Tente novamente mais tarde.");
     }
   };
 
