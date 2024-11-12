@@ -37,9 +37,21 @@ const Register = () => {
       const { data: authData, error: authError } = await supabase.auth.signUp({
         email: values.email,
         password: values.password,
+        options: {
+          data: {
+            name: values.name,
+          },
+        },
       });
 
-      if (authError) throw authError;
+      if (authError) {
+        if (authError.message.includes("Email signups are disabled")) {
+          toast.error("O cadastro por email está temporariamente desabilitado. Por favor, tente mais tarde.");
+        } else {
+          toast.error("Erro ao realizar cadastro: " + authError.message);
+        }
+        return;
+      }
 
       if (authData.user) {
         // 2. Inserir dados adicionais na tabela users
@@ -51,10 +63,14 @@ const Register = () => {
             email: values.email,
             phone: values.phone,
             cpf: values.cpf,
-            cep: values.cep
+            cep: values.cep,
+            password: values.password // Incluindo o password conforme requerido pelo schema
           });
 
-        if (profileError) throw profileError;
+        if (profileError) {
+          toast.error("Erro ao salvar dados do perfil: " + profileError.message);
+          return;
+        }
 
         toast.success("Cadastro realizado com sucesso! Verifique seu email para confirmar o cadastro.");
         navigate("/login");
