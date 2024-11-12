@@ -218,6 +218,39 @@ export type Database = {
           },
         ]
       }
+      users: {
+        Row: {
+          cep: string
+          cpf: string
+          created_at: string | null
+          email: string
+          id: string
+          name: string
+          password: string
+          phone: string
+        }
+        Insert: {
+          cep: string
+          cpf: string
+          created_at?: string | null
+          email: string
+          id: string
+          name: string
+          password: string
+          phone: string
+        }
+        Update: {
+          cep?: string
+          cpf?: string
+          created_at?: string | null
+          email?: string
+          id?: string
+          name?: string
+          password?: string
+          phone?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

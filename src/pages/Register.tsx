@@ -45,16 +45,15 @@ const Register = () => {
         // 2. Inserir dados adicionais na tabela users
         const { error: profileError } = await supabase
           .from('users')
-          .insert([
-            {
-              id: authData.user.id,
-              name: values.name,
-              email: values.email,
-              phone: values.phone,
-              cpf: values.cpf,
-              cep: values.cep,
-            }
-          ]);
+          .insert({
+            id: authData.user.id,
+            name: values.name,
+            email: values.email,
+            phone: values.phone,
+            cpf: values.cpf,
+            cep: values.cep,
+            password: values.password
+          });
 
         if (profileError) throw profileError;
 
