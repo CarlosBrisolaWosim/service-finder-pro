@@ -51,8 +51,7 @@ const Register = () => {
             email: values.email,
             phone: values.phone,
             cpf: values.cpf,
-            cep: values.cep,
-            password: values.password
+            cep: values.cep
           });
 
         if (profileError) throw profileError;
